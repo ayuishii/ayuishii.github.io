@@ -22,7 +22,7 @@ async function main() {
       alert("sms1 received - " + sms.content);
     })
     .catch( e => {
-      alert("error receive 1");
+      alert("error receive 1 - " + e.name);
     });
 
   setTimeout(function() {
@@ -31,7 +31,7 @@ async function main() {
         alert("sms2 received - " + sms.content);
       })
       .catch(e => {
-        alert("error receive 2");
+        alert("error receive 2 - " + e.name);
       });
     await sms2;
   }, 5000);
