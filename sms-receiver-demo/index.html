@@ -24,14 +24,17 @@ async function main() {
     .catch( e => {
       alert("error receive 1");
     });
-  let sms2 = navigator.sms.receive()
-    .then(sms => {
-      alert("sms2 received - " + sms.content);
-    })
-    .catch(e => {
-      alert("error receive 2");
-    });
-  await sms2;
+
+  setTimeout(function() {
+    let sms2 = navigator.sms.receive()
+      .then(sms => {
+        alert("sms2 received - " + sms.content);
+      })
+      .catch(e => {
+        alert("error receive 2");
+      });
+    await sms2;
+  }, 5000);
 }
 
 main();
