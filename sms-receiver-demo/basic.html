@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>SMS Receiver API Demo</title>
+<body>
+Test Basic Usage
+<script>
+
+async function main() {
+  if (!navigator.sms) {
+    alert("feature not available :(");
+    return;
+  }
+  try {
+    let {content} = await navigator.sms.receive();
+    alert("sms received! " + content);
+  } catch (e) {
+    alert("time out!");
+  }
+}
+
+main();
+</script>
+</body>

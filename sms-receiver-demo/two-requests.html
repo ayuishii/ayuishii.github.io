@@ -2,6 +2,7 @@
 <meta charset="utf-8">
 <title>SMS Receiver API Demo</title>
 <body>
+Test One Request Per Page
 <script>
 
 async function main() {
@@ -9,14 +10,6 @@ async function main() {
     alert("feature not available :(");
     return;
   }
-  /*
-  try {
-    let {content} = await navigator.sms.receive();
-    alert("sms received! " + content);
-  } catch (e) {
-    alert("time out!");
-  }
-  */
   navigator.sms.receive()
     .then(sms => {
       alert("sms1 received - " + sms.content);
