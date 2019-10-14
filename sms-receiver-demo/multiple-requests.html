@@ -7,7 +7,7 @@
 <body>
 Trigger multiple requests.
 
-<button onclick="startReceive()">Trigger new request</button>
+<button onclick="startReceive(count)">Trigger new request</button>
 <script>
 
 async function main() {
@@ -26,13 +26,13 @@ async function main() {
 
 let count = 1;
 
-function startReceive() {
+function startReceive(num) {
   navigator.sms.receive()
     .then(sms => {
-      alert("sms " + count + " received - " + sms.content);
+      alert("sms " + num + " received - " + sms.content);
     })
     .catch(e => {
-      alert("error " + count + " receive - " + e.name);
+      alert("error " + num + " receive - " + e.name);
     });
   count += 1;
 }
