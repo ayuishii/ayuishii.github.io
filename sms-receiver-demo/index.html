@@ -33,7 +33,9 @@ async function main() {
       .catch(e => {
         alert("error receive 2 - " + e.name);
       });
-    await sms2;
+    (async function() {
+      await sms2;
+    }());
   }, 5000);
 }
 
