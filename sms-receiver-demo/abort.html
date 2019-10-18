@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>SMS Receiver API Demo</title>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="origin-trial" content="AlcXLe43virNo3xGcWDGVFyQO+xys25BsjRHreksq6G1GFoJ6QolEqnGFhhid1R8Wy+eTh+RulNgWDiUm25HTQsAAABXeyJvcmlnaW4iOiJodHRwczovL2F5dWlzaGlpLmdpdGh1Yi5pbzo0NDMiLCJmZWF0dXJlIjoiU21zUmVjZWl2ZXIiLCJleHBpcnkiOjE1NzQ3MTU2MTV9">
+</head>
+<body>
+Abort Request
+
+<div>
+  <button onclick="startReceive()">Trigger Request</button>
+</div>
+
+<div>
+  <button onclick="abort()">Abort</button>
+</div>
+
+<script>
+
+var hasPendingRequest = false;
+var controller;
+
+function startReceive(num) {
+  if (hasPendingRequest) {
+    alert("Request already in progress.");
+  }
+  hasPendingRequest = true;
+  controller = new AbortController();
+
+  navigator.sms.receive({signal: controller.signal})
+    .then(sms => {
+      alert("sms received - " + sms.content);
+    })
+    .catch(e => {
+      alert("error receive - " + e.name);
+    })
+    .finally(() => {
+      hasPendingRequest = false;
+      controller = null;
+    });
+}
+
+function abort() {
+  if (controller) {
+    controller.abort();
+  }
+}
+
+</script>
+</body>
